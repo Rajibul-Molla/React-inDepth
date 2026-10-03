@@ -1,17 +1,20 @@
-import { useNavigate } from "react-router-dom"
+// useNavigate help us to route with js
 
-export default function Home(){
+import { useNavigate } from "react-router-dom"
+function Home(){
 
     const navigate = useNavigate();
 
-    const goToAbout = () =>{
+    const gotoAbout = ()=>{
         navigate("/about")
     }
 
     return (
-        <div>
-            <h2>Welcome to Home Page</h2>
-            <button onClick={goToAbout}>Go to About</button>
-        </div>
+        <>
+        <h2>Welcome to Home Page</h2>
+        <button onClick={gotoAbout}>Go To About</button>
+        </>
     )
+
 }
+export default Home

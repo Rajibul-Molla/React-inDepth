@@ -1,53 +1,66 @@
-import { BrowserRouter, Routes, Route, Link, useParams, Outlet } from "react-router-dom"
-import Home from "./Home"
-import About from "./About"
-import Contact from "./Contact"
-import Products from "./Products"
-import Phone from "./Phone"
-import Laptop from "./Laptop"
-
-// Defined outside App to avoid re-creation on every render
-function User() {
-  const { id } = useParams()
-  console.log(useParams())
-  return <h2>User Profile for ID: {id}</h2>
-}
-
-function NotFound() {
-  return <h2>404 - Page Not Found</h2>
-}
-
-console.log(Outlet)
-
+import {BrowserRouter , Routes, Route, Link, useParams} from "react-router-dom"
+import Home from "./Home.jsx"
+import About from "./About.jsx"
+import Contact from "./Contact.jsx"
+import Products from "./Products.jsx"
+import Phone from "./Phone.jsx"
+import Laptop from "./Laptop.jsx"
 function App() {
+
+  function User(){
+    console.log(useParams())
+    const {id} = useParams()
+    return <h2>User Profile for id: {id}</h2>
+  }
+
+
+  function NotFound(){
+    return <h2>404 - Page Not Found</h2>
+  }
+
+
+
   return (
+
     <BrowserRouter>
-      <h1>React Router Example</h1>
+    <h1>React Router Example</h1>
 
-      <nav style={{ marginBottom: "20px" }}>
-        <Link to="/">Home</Link> | {" "}
-        <Link to="/about">About</Link> | {" "}
-        <Link to="/contact">Contact</Link> | {" "}
-        <Link to="/user/10">User</Link> | {" "}
-        <Link to="/products">Products</Link>
-      </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/user/:id" element={<User />} />
-        
-        {/* Nested Routes for Products */}
-        <Route path="/products" element={<Products />}>
-          <Route path="phone" element={<Phone />} />
-          <Route path="laptop" element={<Laptop />} />
-        </Route>
+    {/* <a href="/">Home</a> |
+    <a href="/about" >About</a> |
+    <a href="/contact" >Contact</a> */}
 
-        {/* 404 Catch-All Route */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+                {/* OR */}
+
+    <nav>
+      <Link to="/" >Home</Link> |
+      <Link to="/about" >About</Link> |
+      <Link to="/contact" >Contact</Link> |
+      <Link to="/user/10" >User</Link> |
+      <Link to="/products" >Products</Link>
+
+    </nav>
+
+
+
+    
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/user/:id" element={<User />} />
+  <Route path="/products" element={<Products />}>
+      <Route path="phone" element={<Phone />} />
+      <Route path="laptop" element={<Laptop />} />
+  </Route>
+      <Route path="*" element={<NotFound />} />
+
+
+
+    </Routes>
     </BrowserRouter>
+
+    
   )
 }
 
