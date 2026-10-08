@@ -12,18 +12,20 @@ const Laptop = lazy(() => import("./Laptop"))
 // import Products from "./Products"
 // import Phone from "./Phone"
 // import Laptop from "./Laptop"
-
-function App() {
-
   function User(){
     console.log(useParams())
     const { id } = useParams()
     return <h2>User Profile for ID: {id}</h2>
   }
-
-  function NotFound(){
+    function NotFound(){
     return <h2>404 - Page Not Found</h2>
   }
+
+function App() {
+
+
+
+
 
   return (
     <BrowserRouter>
